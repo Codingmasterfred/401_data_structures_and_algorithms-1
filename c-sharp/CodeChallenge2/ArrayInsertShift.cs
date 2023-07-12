@@ -6,17 +6,19 @@ namespace CodeChallenges
     {
       int length = array.Length + 1;
       int[] newArray = new int[length];
-      int midPoint = (length + 1) / 2;
+ 
+      int midPoint = length / 2;
 
       for (int i = 0; i < length; i++)
       {
-        if (i < midPoint - 1)
-        {
-          newArray[i] = array[i];
-        }
-        else if (i == midPoint - 1)
+        if (i == midPoint)
         {
           newArray[i] = value;
+        }
+        else if (i < midPoint)
+        {
+          newArray[i] = array[i];
+
         }
         else
         {
