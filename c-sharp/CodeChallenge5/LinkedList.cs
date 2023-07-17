@@ -24,7 +24,7 @@ public class LinkedList
     return false;
   }
 
-  public override string ToString()
+  public override string ToString() 
   {
     if (Head == null)
     {
