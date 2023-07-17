@@ -1,42 +1,48 @@
 using Xunit;
 
-namespace CodeChallenges.Tests
+namespace LinkedListTest
 {
   public class LinkedListTests
   {
     [Fact]
-    public void LinkedList_Can_Add_Single_Node()
+    public void TestLinkedListCreation()
     {
-      // Arrange
-      LinkedList list = new LinkedList();
-      Node node = new Node(5);
-
-      // Act
-      list.AddNewNode(node);
-
-      // Assert
-      Assert.Equal(list.Head, node);
+      LinkedList linkedList = new LinkedList();
+      Assert.Null(linkedList.Head);
     }
 
     [Fact]
-    public void LinkedList_Can_Add_Two_Nodes()
+    public void TestLinkedListInsertion()
     {
-      // Arrange
-      LinkedList list = new LinkedList();
-      Node node1 = new Node(5);
-      Node node2 = new Node(6);
+      LinkedList linkedList = new LinkedList();
+      linkedList.AddNewNode(new Node(3));
+      linkedList.AddNewNode(new Node(7));
 
-      LinkedList expectedList = new LinkedList();
-      node2.Next = node1;
-      expectedList.Head = node2;
+      Assert.Equal(7, linkedList.Head.Value);
+      Assert.Equal(3, linkedList.Head.Next.Value);
+    }
 
-      // Act
-      list.AddNewNode(node1);
-      list.AddNewNode(node2);
+    [Fact]
+    public void TestLinkedListIncludes()
+    {
+      LinkedList linkedList = new LinkedList();
+      linkedList.AddNewNode(new Node(5));
+      linkedList.AddNewNode(new Node(10));
 
-      // Assert
-      Assert.Equal(expectedList.Head, list.Head);
-      Assert.Equal(expectedList.Head.Next, list.Head.Next);
+      Assert.True(linkedList.Includes(5));
+      Assert.True(linkedList.Includes(10));
+      Assert.False(linkedList.Includes(7));
+    }
+
+    [Fact]
+    public void TestLinkedListToString()
+    {
+      LinkedList linkedList = new LinkedList();
+      linkedList.AddNewNode(new Node(2));
+      linkedList.AddNewNode(new Node(4));
+      linkedList.AddNewNode(new Node(6));
+
+      Assert.Equal("{ 6 } -> { 4 } -> { 2 } -> NULL", linkedList.ToString());
     }
   }
 }
