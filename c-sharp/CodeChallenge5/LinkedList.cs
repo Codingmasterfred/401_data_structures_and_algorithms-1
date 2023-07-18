@@ -1,56 +1,58 @@
-using System;
-
-public class LinkedList
+namespace CodeChallenges
 {
-  public Node Head;
-
-  public void AddNewNode(Node node)
+  public class LinkedList
   {
-    node.Next = Head;
-    Head = node;
-  }
+    public Node Head { get; set; }
 
-  public bool Includes(int value)
-  {
-    Node current = Head;
-    while (current != null)
+    public void Insert(int value)
     {
-      if (current.Value == value)
+      Node newNode = new Node(value);
+      newNode.Next = Head;
+      Head = newNode;
+    }
+
+    public bool Includes(int value)
+    {
+      Node current = Head;
+      while (current != null)
       {
-        return true;
+        if (current.Value == value)
+        {
+          return true;
+        }
+        current = current.Next;
       }
-      current = current.Next;
+      return false;
     }
-    return false;
+
+    public override string ToString()
+    {
+      if (Head == null)
+      {
+        return "NULL";
+      }
+
+      string result = "";
+      Node current = Head;
+      while (current != null)
+      {
+        result += $"{current.Value} -> ";
+        current = current.Next;
+      }
+      result += "NULL";
+      return result;
+    }
   }
 
-  public override string ToString() 
+  public class Node
   {
-    if (Head == null)
+    public Node Next { get; set; }
+    public int Value { get; set; }
+
+    public Node(int value)
     {
-      return "NULL";
+      Value = value;
+      Next = null;
     }
-
-    string result = "";
-    Node current = Head;
-    while (current != null)
-    {
-      result += $"{{ {current.Value} }} -> ";
-      current = current.Next;
-    }
-    result += "NULL";
-    return result;
-  }
-}
-
-public class Node
-{
-  public Node Next;
-  public int Value;
-
-  public Node(int value)
-  {
-    Value = value;
-    Next = null;
   }
 }
