@@ -12,7 +12,7 @@ namespace CodeChallenges
       if (n == 0)
       {
         return 0;
-      }
+      } 
 
       int a = 0;
       int b = 1;
