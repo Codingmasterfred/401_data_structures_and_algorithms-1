@@ -4,6 +4,7 @@ public class LinkedList
 {
   public Node Head;
 
+<<<<<<< HEAD
   public void AddNewNode(Node node)
   {
     node.Next = Head;
@@ -29,6 +30,10 @@ public class LinkedList
     if (Head == null)
     {
       return "NULL";
+=======
+
+
+>>>>>>> 141754c9c629af4a4d1cdea725b8156896753c85
     }
 
     string result = "";
