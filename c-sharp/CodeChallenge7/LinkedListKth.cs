@@ -10,7 +10,7 @@ namespace CodeChallenges
         throw new Exception("Invalid input or kthFromEnd is negative");
       }
       Node fast = Head;
-      Node slow = Head;
+      Node slow = Head; 
 
       for (int i = 0; i < kthFromEnd - 1; i++)
       {
