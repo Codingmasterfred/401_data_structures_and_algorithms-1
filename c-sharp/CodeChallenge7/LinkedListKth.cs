@@ -1,90 +1,44 @@
-public class Node
+namespace CodeChallenges
 {
-  public int Value { get; set; }
-  public Node Next { get; set; }
-}
-
-public class LinkedList
-{
-  public Node Head { get; set; }
-
-  // Other LinkedList properties and methods...
-}
-
-public class InsertableLinkedList : LinkedList
-{
-  // Adds a new node with the given value to the end of the list
-  public void Append(int value)
+  public class LinkedListKth : InsertableLinkedList
   {
-    Node newNode = new Node { Value = value };
 
-    if (Head == null)
+    public int KthFromEnd(int kthFromEnd)
     {
-      Head = newNode;
-    }
-    else
-    {
-      Node current = Head;
-      while (current.Next != null)
+      if (kthFromEnd < 0 || Head == null)
       {
-        current = current.Next;
+        throw new Exception("Invalid input or kthFromEnd is negative");
       }
-      current.Next = newNode;
-    }
-  }
+      Node fast = Head;
+      Node slow = Head;
 
-  // Adds a new node with the given new value immediately before the first node that has the value specified
-  public void InsertBefore(int value, int valueToInsert)
-  {
-    if (Head == null)
-    {
-      return;
-    }
-
-    Node newNode = new Node { Value = valueToInsert };
-
-    if (Head.Value == value)
-    {
-      newNode.Next = Head;
-      Head = newNode;
-      return;
-    }
-
-    Node current = Head;
-    while (current.Next != null)
-    {
-      if (current.Next.Value == value)
+      for (int i = 0; i < kthFromEnd - 1; i++)
       {
-        newNode.Next = current.Next;
-        current.Next = newNode;
-        return;
+        // If the fast pointer reaches the end before making k moves, throw an exception
+        if (fast.Next == null)
+        {
+          throw new Exception("k is larger than the size of the linked list");
+        }
+        fast = fast.Next;
       }
-      current = current.Next;
-    }
-  }
 
-  // Adds a new node with the given new value immediately after the first node that has the value specified
-  public void InsertAfter(int value, int valueToInsert)
-  {
-    Node newNode = new Node { Value = valueToInsert };
-
-    if (Head == null)
-    {
-      Head = newNode;
-      return;
-    }
-
-    Node current = Head;
-    while (current != null)
-    {
-      if (current.Value == value)
+      while (fast.Next != null)
       {
-        newNode.Next = current.Next;
-        current.Next = newNode;
-        return;
+        fast = fast.Next;
+        slow = slow.Next;
       }
-      current = current.Next;
+
+      // At this point, the slow pointer is at the kth from the end node
+      return slow.Value;
     }
+
+
   }
 }
+
+
+
+
+
+
 

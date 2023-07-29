@@ -54,7 +54,7 @@ namespace CodeChallengeTests
     }
 
     [Fact]
-    public void InsertableLinkedList_Can_InsertBefore_New_Value_To_List_With_2_Nodes()
+      public void InsertableLinkedList_Can_InsertBefore_New_Value_To_List_With_2_Nodes()
     {
       MethodInfo insertMethod = typeof(InsertableLinkedList).GetMethod("Insert");
       Assert.True(insertMethod != null);
