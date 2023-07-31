@@ -30,7 +30,9 @@ namespace CodeChallenges
     }
     public Stack()
     {
+
       Top = null;
+
 
     }
 
@@ -78,6 +80,7 @@ namespace CodeChallenges
 
     public int Peek()
     {
+
       if (Top == null)
       {
         throw new Exception("Oh no! Empty Stack");
@@ -85,6 +88,7 @@ namespace CodeChallenges
       }
 
       return Top.Value;
+
 
 
 

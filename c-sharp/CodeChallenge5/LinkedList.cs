@@ -32,6 +32,7 @@ namespace CodeChallenges
         return "NULL";
       }
 
+
       string result = "";
       Node current = Head;
       while (current != null)
