@@ -9,9 +9,9 @@ namespace CodeChallenges
 
     public StackQueuePsuedo()
     {
-      enqueueStack = new Stack<int>();
+      enqueueStack = new Stack<int>(); 
       dequeueStack = new Stack<int>();
-    }
+    } 
 
     public void Enqueue(int value)
     {
