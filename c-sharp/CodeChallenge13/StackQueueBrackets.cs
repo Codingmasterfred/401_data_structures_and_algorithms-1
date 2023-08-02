@@ -29,7 +29,7 @@ namespace CodeChallenges
           else
           {
             return false; // Mismatched closing bracket
-          }
+          } 
         }
       }
 
